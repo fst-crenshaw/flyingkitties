@@ -1,0 +1,15 @@
+[Unit]
+Description=My Rocket application for flyingkitties.net
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/home/ubuntu/flyingkitties/
+Environment="ROCKET_ENV=prod"
+Environment="ROCKET_ADDRESS=0.0.0.0"
+Environment="ROCKET_PORT=8000"
+Environment="ROCKET_LOG=critical"
+ExecStart=/home/ubuntu/flyingkitties/target/release/flyingkitties
+
+[Install]
+WantedBy=multi-user.target
