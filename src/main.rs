@@ -25,8 +25,8 @@ use administrator::*;
 use layout::*;
 
 #[allow(dead_code)]
-const URL: &'static str = "http://localhost:8000";
-const LOGIN_URL: &'static str = "http://localhost:8000/login";
+const URL: &'static str = "https://flyingkitties.net";
+const LOGIN_URL: &'static str = "https://flyingkitties.net/login";
 
 #[get("/login", rank = 1)]
 fn logged_in(_user: AuthCont<AdministratorCookie>) -> Html<String> {

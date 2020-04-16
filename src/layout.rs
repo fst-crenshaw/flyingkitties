@@ -41,33 +41,13 @@ pub const LAYOUT_HEADER: &'static str = r##"
         <!-- JavaScript -->
         <script src="sha256.js"></script>
         <script src="login.js"></script>
-        
-        <style>
-        
-        </style>
     </head>
     <body>
         <div id="mainWrapper" class="main-wrapper">
-            
-
-                <div id="v-body">
-                    <div class="v-content">
+                <div id="body">
+                    <div class="container">
                         
 "##;
-
-// A possible function to pad the left side of each line of output to match the layout template
-// pub fn pad_output(input: String) -> String {
-//     input.lines().map(|mut o|
-//         // if the line already begins with at least 6 tabs or 24 spaces do nothing
-//         if (o.len() > 6 && o.get(0..6) == Some("\t\t\t\t\t\t")) || (o.len() > 24 && o.get(0..24) == Some("                        ")) {
-//             o
-//         } else {
-//             // otherwise prepend the correct amount of spacing
-//             o.insert_str(0, "                        ")
-//         }
-        
-//         )
-// }
 
 pub const LAYOUT_FOOTER: &'static str = r##"
                     </div>
@@ -79,18 +59,25 @@ pub const LAYOUT_FOOTER: &'static str = r##"
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>        
         <!-- Custom JavaScript -->
         <script>
-        </script>
-        
+        </script>        
     </body>
 </html>
 "##;
 
 pub fn layout_form(url: &str) -> String {
     format!(r##"
+
+<div class="kitty">
+<pre>
+../\„„./\.
+.(='•'= ) .
+.(") „. (").
+. \,\„„/,/			    
+<pre>
+</div>
                         <form id="needs-validation" action="{url}" name="login_form" method="post" novalidate>
                             <div class="form-group" id="userGroup">
                                 <label for="usernameField">Email Address</label>
@@ -112,13 +99,7 @@ pub fn layout_form(url: &str) -> String {
                                     <input type="password" id="passwordHidden" class="hidden-pass form-control">
                                 </div>
                             </div>
-<div class="kitty">
-../\„„./\.
-.(='•'= ) .
-.(") „. (").
-. \,\„„/,/			    
-</div>
-                            <div class="v-submit">
+                            <div class="submit">
                                 <button type="submit" class="btn btn-primary" id="submit-button-id">Login</button>
                             </div>
                         </form>
@@ -148,7 +129,7 @@ pub fn layout_retry_form(url: &str, username: &str) -> String {
                                     <input type="password" id="passwordHidden" class="hidden-pass form-control">
                                 </div>
                             </div>
-                            <div class="v-submit">
+                            <div class="submit">
                                 <button type="submit" class="btn btn-primary" id="submit-button-id">Login</button>
                             </div>
                         </form>
@@ -158,7 +139,7 @@ pub fn layout_retry_form(url: &str, username: &str) -> String {
 #[allow(dead_code)]
 pub fn alert_danger(msg: &str) -> String {
     format!(r##"
-                        <div class="v-centered-msg alert alert-danger" role="alert">
+                        <div class="centered-msg alert alert-danger" role="alert">
                             {why}
                         </div>
 "##, why=msg)
@@ -166,7 +147,7 @@ pub fn alert_danger(msg: &str) -> String {
 #[allow(dead_code)]
 pub fn alert_success(msg: &str) -> String {
     format!(r##"
-                        <div class="v-centered-msg alert alert-success" role="alert">
+                        <div class="centered-msg alert alert-success" role="alert">
                             {why}
                         </div>
 "##, why=msg)
@@ -174,7 +155,7 @@ pub fn alert_success(msg: &str) -> String {
 #[allow(dead_code)]
 pub fn alert_info(msg: &str) -> String {
     format!(r##"
-                        <div class="v-centered-msg alert alert-info" role="alert">
+                        <div class="centered-msg alert alert-info" role="alert">
                             {why}
                         </div>
 "##, why=msg)
@@ -182,7 +163,7 @@ pub fn alert_info(msg: &str) -> String {
 #[allow(dead_code)]
 pub fn alert_warning(msg: &str) -> String {
     format!(r##"
-                        <div class="v-centered-msg alert alert-warning" role="alert">
+                        <div class="centered-msg alert alert-warning" role="alert">
                             {why}
                         </div>
 "##, why=msg)
@@ -190,7 +171,7 @@ pub fn alert_warning(msg: &str) -> String {
 #[allow(dead_code)]
 pub fn alert_primary(msg: &str) -> String {
     format!(r##"
-                        <div class="v-centered-msg alert alert-primary" role="alert">
+                        <div class="centered-msg alert alert-primary" role="alert">
                             {why}
                         </div>
 "##, why=msg)
