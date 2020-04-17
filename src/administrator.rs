@@ -2,14 +2,8 @@
 use rocket::{Request, Outcome};
 use rocket::request::FromRequest;
 use std::collections::HashMap;
-// use rocket::{Request, Data, Outcome, Response};
-// use rocket::http::{Cookie, Cookies, MediaType, ContentType, Status, RawStr};
-// use rocket::request::{FlashMessage, Form, FromRequest,FromForm, FormItems, FromFormValue, FromParam};
-// use rocket::response::{content, NamedFile, Redirect, Flash, Responder, Content};
-// use rocket::response::content::Html;
 
 use auth::authorization::*;
-// use auth::sanitization::*;
 
 /// The AdministratorCookie type is used to indicate a user has logged in as an administrator
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -53,8 +47,6 @@ impl AuthorizeCookie for AdministratorCookie {
     /// MsgPack is a binary format, and while not human readable is more
     /// compact and efficient.
     fn store_cookie(&self) -> String {
-        // String::from("This is my cooky")
-        // let ser = ::serde_json::to_string(self).expect("Could not serialize");
         ::serde_json::to_string(self).expect("Could not serialize")
     }
     
@@ -79,13 +71,6 @@ impl AuthorizeCookie for AdministratorCookie {
         } else {
             None
         }
-        // Some(
-        //     AdministratorCookie {
-        //         userid: 66,
-        //         username: "andrew".to_string(),
-        //         display: Some("Andrew Prindle".to_string()),
-        //     }
-        // )
     }
 }
 

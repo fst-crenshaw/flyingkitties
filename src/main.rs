@@ -140,16 +140,3 @@ fn main() {
         .launch();
 }
 
-/*
-
-#[get("/")]
-fn index() -> &'static str {r###"
-../\„„./\.
-.(='•'= ) .
-.(") „. (").
-. \,\„„/,/"###}
-
-fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
-}
- */
